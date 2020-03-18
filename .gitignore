@@ -1,0 +1,11 @@
+# maven
+/target/
+
+# eclipse
+/.project
+/.settings/
+/.factorypath
+
+# intellij
+/.idea/
+*.iml
