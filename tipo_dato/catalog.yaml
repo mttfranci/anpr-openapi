@@ -1,41 +1,31 @@
 openapi: 3.0.0
 info:
-  title: OpenAPI dei tipi dati base di ANPR'
+  title: 'OpenAPI dei tipi dati base di ANPR'
   description: 'Contiene i tipi dati base relativi ad ANPR (mappatura di tipoDati.xsd)'
   version: '1.0.0'
 servers:
   - url: http://localhost:9080/anpr-api/jaxrs/anpr/catalog/dati
     description: Sample Development server
 paths:
-  /ricercaBase/idSoggettoANPR/{idSoggettoANPR}/cognome/{cognome}/nome/{nome}:
+  /ricercaBase/idSoggettoANPR/{idSoggettoANPR}:
     get:
-      summary: Get info base utente (generalita, carta identita, residenza) a partire da CF / NOME / COGNOME
+      summary: Get info utente in base all' id del soggetto
       parameters: 
         - name: idSoggettoANPR
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: cognome
-          in: path
-          required: true
-          schema:
-            type: string      
-        - name: nome
           in: path
           required: true
           schema:
             type: string                  
       responses:
         '200':
-          description: Success response
+          description: Risposta positiva
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/XmlDatiSoggetto'                  
+                  $ref: '#/components/schemas/DatiSoggetto'                  
 components:
   schemas:
-    XmlDatiSoggetto:
+    DatiSoggetto:
       properties:
         generalita:
           $ref: '#/components/schemas/TipoGeneralita'
