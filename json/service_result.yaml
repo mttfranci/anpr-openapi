@@ -1,0 +1,121 @@
+openapi: 3.0.0
+info:
+  title: 'Interfaccia del risultato di un servizio che supporta messaggi e paginazione'
+  description: 'OpenAPI contenente un oggetto complesso per il risultato di un servizio rest, con paginazione e 4 livello di messaggi'
+  version: '1.0.0'
+servers:
+  - url: http://localhost:9080/anpr-api/jaxrs/anpr/service/result
+    description: Sample Development server
+paths:
+  /example:
+    get:
+      summary: Esempio di utilizzo con risultato singolo
+      responses:
+        '200':
+          description: Risposta positiva
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/SampleObjectResult'  
+  /example/pageIndex/{pageIndex}/pageSize/{pageSize}:
+    get:
+      summary: Esempio di utilizzo con lista
+      parameters: 
+        - name: pageIndex
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: path
+          required: true
+          schema:
+            type: string                      
+      responses:
+        '200':
+          description: Risposta positiva
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/SampleArrayResult'                  
+components:
+  schemas:
+    SampleObjectResult:
+      description: questo oggetto costituisce un esempio e andrebbe specializzato di volta in volta
+      allOf:
+        - $ref: '#/components/schemas/BasicResult'
+        - type: object
+          properties:
+            content:
+              $ref: '#/components/schemas/SampleContent'
+    SampleArrayResult:
+      description: questo oggetto costituisce un esempio e andrebbe specializzato di volta in volta
+      allOf:
+        - $ref: '#/components/schemas/BasicResult'
+        - type: object
+          properties:
+            content:
+              type: array
+              items:
+                $ref: '#/components/schemas/SampleContent'              
+    SampleContent:
+      description: esempio di contenuto del risultato
+      properties:
+        test1:
+          type: string
+          description: Numero di elementi in una pagina
+          example: "string1"
+        test2:
+          type: string
+          description: Numero della pagina corrente
+          example: "string2"
+    BasicResult:
+      description: E' preferibile specializzare questo oggetto, modificando la property 'content'
+      properties:
+        pageInfo:
+          $ref: '#/components/schemas/PageInfo'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceMessage'
+        infos:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceMessage'
+        success:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceMessage'
+        warnings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceMessage'
+    PageInfo:
+      properties:
+        pageSize:
+          type: integer
+          description: Numero di elementi in una pagina
+          example: 10
+        pageIndex:
+          type: integer
+          description: Numero della pagina corrente
+          example: 1
+        elementCount:
+          type: integer
+          description: Numero totale di elementi
+          example: 1000
+        pageCount:
+          type: integer
+          description: Numero totale delle pagine
+          example: 100
+    ServiceMessage:
+      properties:
+        code:
+          type: string
+          example: "E1"
+        severity:
+          type: string
+          example: "E"
+        text:
+          type: string
+          example: "Messaggio d'errore"
