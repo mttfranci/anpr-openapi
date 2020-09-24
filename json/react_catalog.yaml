@@ -28,6 +28,7 @@ paths:
                   $ref: '#/components/schemas/Menu'
 components:
   schemas:
+
     Menu: 
       properties:
         id:
@@ -44,7 +45,6 @@ components:
           type: string
         label:
           type: string
-      
     MenuItem:
       properties:
         id:
@@ -61,3 +61,48 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MenuItem'
+
+    RadioInput:
+      properties:
+        id:
+          type: string
+          example: "semplice"
+        label:
+          type: string
+          example: "semplice"
+        radioValue:
+          type: string
+          example: "semplice"
+
+    Checkbox: 
+      properties:
+        id:
+          type: string
+          example: "ev"
+        name:
+          type: string
+          example: "di esistenza in vita"
+        value:
+          type: string
+          example: "di esistenza in vita"
+        dimension:
+          type: string
+          example: "sm"
+        label:
+          type: string
+          example: "di esistenza in vita"
+        extraProps:
+          $ref: '#/components/schemas/ExtraProps'
+
+    ExtraProps:
+      properties:
+        visible:
+          type: string
+          example: true
+        checked:
+          type: string
+          example: false
+        disabled:
+          type: string
+          example: false
+
