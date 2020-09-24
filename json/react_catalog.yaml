@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: 'Oggetti di interfaccia per il catalogo REACT SOGEI'
+  description: 'Contiene gli oggetti di ritorno previsti dai vari componenti del catalogo react SOGEI'
+  version: '1.0.0'
+servers:
+  - url: http://localhost:9080/anpr-api/jaxrs/anpr/service/result
+    description: Sample Development server
+paths:
+  "/example/menu/${idMenu}":
+    get:
+      tags:
+        - menu
+      summary: Operazione di esempio di accesso ad un menù
+      parameters: 
+        - name: idMenu
+          in: path
+          required: true
+          description: Id del menù
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Menu'
+components:
+  schemas:
+    Menu: 
+      properties:
+        id:
+          type: string
+        sectionTitle:
+          $ref: '#/components/schemas/MenuTitle'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MenuItem'
+    MenuTitle:
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+      
+    MenuItem:
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        icon:
+          type: string
+        path:
+          type: string
+        exact:
+          type: string
+        subItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/MenuItem'
