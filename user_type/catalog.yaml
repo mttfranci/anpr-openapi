@@ -1,0 +1,298 @@
+openapi: 3.0.0
+info:
+  title: 'OpenAPI dei user type base di ANPR'
+  description: 'Contiene i tipi dati base relativi ad ANPR (mappatura di alcuni oggetti personalizzati)'
+  version: '1.0.0'
+servers:
+  - url: http://localhost:9080/anpr-api/jaxrs/anpr/catalog/userType
+    description: Sample Development server
+paths:
+  /ricercaBase/idSoggettoANPR/{idSoggettoANPR}:
+    get:
+      summary: Get info utente in base all' id del soggetto
+      parameters: 
+        - name: idSoggettoANPR
+          in: path
+          required: true
+          schema:
+            type: string                  
+      responses:
+        '200':
+          description: Risposta positiva
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/ModelGeneralitaSoggetto'                  
+components:
+  schemas:
+    ModelGeneralitaSoggetto:
+      properties:
+        id: 
+          type: string
+          example: ''
+        validazioneanpr: 
+          type: string
+          example: ''
+        codistatcomunenascita: 
+          type: string
+          example: ''
+        codstatonascita: 
+          type: string
+          example: ''
+        idcomunecodice: 
+          type: string
+          example: ''
+        idsoggettocomune: 
+          type: string
+          example: ''
+        esitovalidazioneae: 
+          type: string
+          example: ''
+        datavalidazioneae: 
+          type: string
+          example: ''
+        datanascitaformato: 
+          type: string
+          example: ''
+        idcomunenascita: 
+          type: string
+          example: ''
+        siglaprovincianascita: 
+          type: string
+          example: ''
+        datanascitastringa: 
+          type: string
+          example: ''
+        nomecomunenascita: 
+          type: string
+          example: ''
+        cognometraslitterato: 
+          type: string
+          example: ''
+        idcomunepregrnasc: 
+          type: string
+          example: ''
+        nometraslitterato: 
+          type: string
+          example: ''
+        dataattribuzionevaliditacf: 
+          type: string
+          example: ''
+        idstatopregrmorte: 
+          type: string
+          example: ''
+        dataultimoaggapr: 
+          type: string
+          example: ''
+        datainiziotutoraggio: 
+          type: string
+          example: ''
+        datafinetutoraggio: 
+          type: string
+          example: ''
+        datamortestringa: 
+          type: string
+          example: ''
+        senzafissadimora: 
+          type: string
+          example: ''
+        certificabilecomune: 
+          type: string
+          example: ''
+        presenzaanomalie: 
+          type: string
+          example: ''
+        idsoggettomadre: 
+          type: string
+          example: ''
+        soggettoelaborabile: 
+          type: string
+          example: ''
+        idmadreextraanpr: 
+          type: string
+          example: ''
+        desclocalitanascita: 
+          type: string
+          example: ''
+        desclocalitamorte: 
+          type: string
+          example: ''
+        idsoggettotutore: 
+          type: string
+          example: ''
+        luogonascitaecc: 
+          type: string
+          example: ''
+        nomestatonascita: 
+          type: string
+          example: ''
+        idstatonascita: 
+          type: string
+          example: ''
+        idposizioneprof: 
+          type: string
+          example: ''
+        idtitolostudio: 
+          type: string
+          example: ''
+        idstatopregrnasc: 
+          type: string
+          example: ''
+        idsoggettopadre: 
+          type: string
+          example: ''
+        datamorteformato: 
+          type: string
+          example: ''
+        idtutoreextraanpr: 
+          type: string
+          example: ''
+        idcomunepregrmorte: 
+          type: string
+          example: ''
+        idpadreextraanpr: 
+          type: string
+          example: ''
+        luogomorteecc: 
+          type: string
+          example: ''
+        filiazione: 
+          type: string
+          example: ''
+        senzanome: 
+          type: string
+          example: ''
+        veicoli: 
+          type: string
+          example: ''
+        cognome: 
+          type: string
+          example: ''
+        omocodia: 
+          type: string
+          example: ''
+        datanascita: 
+          type: string
+          example: ''
+        idstatomorte: 
+          type: string
+          example: ''
+        senzacognome: 
+          type: string
+          example: ''
+        visaltrinomi: 
+          type: string
+          example: ''
+        codicefiscale: 
+          type: string
+          example: ''
+        idstatocf: 
+          type: string
+          example: ''
+        idregfine: 
+          type: string
+          example: ''
+        idattomorte: 
+          type: string
+          example: ''
+        idattonascita: 
+          type: string
+          example: ''
+        datamorte: 
+          type: string
+          example: ''
+        patente: 
+          type: string
+          example: ''
+        altrinomi: 
+          type: string
+          example: ''
+        nome: 
+          type: string
+          example: ''
+        idcomunemorte: 
+          type: string
+          example: ''
+        sesso: 
+          type: string
+          example: ''
+        idsoggetto: 
+          type: string
+          example: ''
+        idcondnonprof: 
+          type: string
+          example: ''
+        idreginizio: 
+          type: string
+          example: ''
+    ModelFamigliaConvivenza:
+      properties:
+        id: 
+          type: string
+          example: ''
+        idcomuneapertura: 
+          type: string
+          example: ''
+        dataarchiviazione: 
+          type: string
+          example: ''
+        idmotivocostituzione: 
+          type: string
+          example: ''
+        datainiziovalidita: 
+          type: string
+          example: ''
+        datafinevalidita: 
+          type: string
+          example: ''
+        numeroschedaapr: 
+          type: string
+          example: ''
+        denominazioneconvivenza: 
+          type: string
+          example: ''
+        descmotivoarchiviazione: 
+          type: string
+          example: ''
+        idspecieconvivenza: 
+          type: string
+          example: ''
+        descmotivocostituzione: 
+          type: string
+          example: ''
+        idtutoreintestatario: 
+          type: string
+          example: ''
+        descspecieconvivenza: 
+          type: string
+          example: ''
+        idtutoreintestatarioextraanpr: 
+          type: string
+          example: ''
+        dataapertura: 
+          type: string
+          example: ''
+        stato: 
+          type: string
+          example: ''
+        datains: 
+          type: string
+          example: ''
+        coabitazione: 
+          type: string
+          example: ''
+        idregfine: 
+          type: string
+          example: ''
+        dataultimoagg: 
+          type: string
+          example: ''
+        certificabile: 
+          type: string
+          example: ''
+        idtiposcheda: 
+          type: string
+          example: ''
+        idreginizio: 
+          type: string
+          example: ''
